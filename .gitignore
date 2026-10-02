@@ -1,0 +1,76 @@
+# =============================================================
+#  .gitignore para proyectos VHDL con AMD/Xilinx Vivado
+# =============================================================
+#  Se versiona: fuentes (.vhd), constraints (.xdc), IP (.xci),
+#  block designs (.bd), scripts Tcl y el .xpr del proyecto.
+#  Se ignora: todo lo que Vivado regenera automáticamente.
+# =============================================================
+
+# --- Directorios generados por el proyecto -------------------
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.tmp/
+.Xil/
+NA/
+
+# --- Simulación (XSim) ---------------------------------------
+xsim.dir/
+*.wdb
+*.pb
+webtalk*
+xelab.*
+xvhdl.*
+xvlog.*
+xsim*.log
+xsim*.jou
+*.wcfg.bak
+
+# --- Logs, journals y backups --------------------------------
+*.log
+*.jou
+*.backup.*
+*.str
+vivado_pid*.str
+vivado_pid*.zip
+hs_err_pid*.log
+
+# --- Salidas de implementación -------------------------------
+# Descomenta si NO quieres versionar los bitstreams finales
+*.bit
+*.bin
+*.mcs
+*.prm
+*.ltx
+*.dcp
+*.rpt
+*.xsa
+
+# --- IP: versionar solo el .xci, ignorar lo generado ---------
+*.srcs/**/ip/**/*
+!*.srcs/**/ip/**/
+!*.srcs/**/ip/**/*.xci
+!*.srcs/**/ip/**/*.xcix
+
+# --- Block designs: versionar solo el .bd --------------------
+*.srcs/**/bd/**/*
+!*.srcs/**/bd/**/
+!*.srcs/**/bd/**/*.bd
+
+# --- Vitis / SDK (si se usa con un procesador) ---------------
+*.sdk/
+.metadata/
+_ide/
+RemoteSystemsTempFiles/
+
+# --- Editores y sistema operativo ----------------------------
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
