@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
-<Project Product="Vivado" Version="7" Minor="72" Path="/home/hectorc/Escritorio/Vivado/Interfaz_RS232/Interfaz_RS232.xpr">
+<Project Product="Vivado" Version="7" Minor="72" Path="/home/hectorc/Escritorio/LCSE rep/LCSE_RS232/Interfaz_RS232/Interfaz_RS232.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="0e2fd767582349ef9621eb549d2553cf"/>
@@ -94,7 +94,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/Simulacion_RS232/RS232top.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Simulacion_RS232/RS232top.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../Vivado/Simulacion_RS232/RS232top.vhd"/>
           <Attr Name="ImportTime" Val="1695912236"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -102,7 +102,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/Design Sources/ShiftRegister.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Archivos Interfaz_RS232/Design Sources/ShiftRegister.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../Vivado/Archivos Interfaz_RS232/Design Sources/ShiftRegister.vhd"/>
           <Attr Name="ImportTime" Val="1790706075"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -110,7 +110,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/Placa_tb/Nexys_RS232top.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Archivos Interfaz_RS232/Simulation Sources/Placa_tb/Nexys_RS232top.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../Vivado/Archivos Interfaz_RS232/Simulation Sources/Placa_tb/Nexys_RS232top.vhd"/>
           <Attr Name="ImportTime" Val="1758095870"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -126,7 +126,7 @@
       <Filter Type="Constrs"/>
       <File Path="$PSRCDIR/constrs_1/imports/Prueba_RS232top/Nexys_RS232top.xdc">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Prueba_RS232top/Nexys_RS232top.xdc"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../Vivado/Prueba_RS232top/Nexys_RS232top.xdc"/>
           <Attr Name="ImportTime" Val="1695302484"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -137,6 +137,7 @@
       </Config>
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
+      <Filter Type="Srcs"/>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
         <Option Name="TopModule" Val="nexys_RS232top"/>
@@ -197,9 +198,10 @@
       </Config>
     </FileSet>
     <FileSet Name="RX_tb" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/RX_tb" RelGenDir="$PGENDIR/RX_tb">
+      <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/RX_tb/imports/RX_tb/RS232_RX_tb.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Archivos Interfaz_RS232/Simulation Sources/RX_tb/RS232_RX_tb.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../Vivado/Archivos Interfaz_RS232/Simulation Sources/RX_tb/RS232_RX_tb.vhd"/>
           <Attr Name="ImportTime" Val="1790703401"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -232,9 +234,10 @@
       </Config>
     </FileSet>
     <FileSet Name="TX_tb" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/TX_tb" RelGenDir="$PGENDIR/TX_tb">
+      <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/TX_tb/imports/TX_tb/RS232_TX_tb.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Archivos Interfaz_RS232/Simulation Sources/TX_tb/RS232_TX_tb.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../Vivado/Archivos Interfaz_RS232/Simulation Sources/TX_tb/RS232_TX_tb.vhd"/>
           <Attr Name="ImportTime" Val="1790703406"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -267,9 +270,10 @@
       </Config>
     </FileSet>
     <FileSet Name="ShiftRegister_tb" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/ShiftRegister_tb" RelGenDir="$PGENDIR/ShiftRegister_tb">
+      <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/ShiftRegister_tb/imports/ShiftRegister_tb/ShiftRegister_tb.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Archivos Interfaz_RS232/Simulation Sources/ShiftRegister_tb/ShiftRegister_tb.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../Vivado/Archivos Interfaz_RS232/Simulation Sources/ShiftRegister_tb/ShiftRegister_tb.vhd"/>
           <Attr Name="ImportTime" Val="1790707979"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -302,11 +306,17 @@
       </Config>
     </FileSet>
     <FileSet Name="RS232top_tb" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/RS232top_tb" RelGenDir="$PGENDIR/RS232top_tb">
+      <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/RS232top_tb/imports/Global_tb/tb_RS232top.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Archivos Interfaz_RS232/Simulation Sources/Global_tb/tb_RS232top.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../Vivado/Archivos Interfaz_RS232/Simulation Sources/Global_tb/tb_RS232top.vhd"/>
           <Attr Name="ImportTime" Val="1758818482"/>
           <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/RS232top_TB_behav.wcfg">
+        <FileInfo>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
@@ -323,6 +333,7 @@
         <Option Name="PamSignalDriverFile" Val="xil_bypass_driver"/>
         <Option Name="PamPseudoTop" Val="pseudo_tb"/>
         <Option Name="SrcSet" Val="sources_1"/>
+        <Option Name="XSimWcfgFile" Val="$PPRDIR/RS232top_TB_behav.wcfg"/>
         <Option Name="CosimPdi" Val=""/>
         <Option Name="CosimPlatform" Val=""/>
         <Option Name="CosimElf" Val=""/>
@@ -374,9 +385,7 @@
     </Run>
     <Run Id="clk_wiz_0_synth_1" Type="Ft3:Synth" SrcSet="clk_wiz_0" Part="xc7a100tcsg324-1" ConstrsSet="clk_wiz_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/clk_wiz_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/clk_wiz_0_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/clk_wiz_0_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2026">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2026"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -386,9 +395,7 @@
     </Run>
     <Run Id="fifo_synth_1" Type="Ft3:Synth" SrcSet="fifo" Part="xc7a100tcsg324-1" ConstrsSet="fifo" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/fifo_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/fifo_synth_1" AutoRQSDir="$PSRCDIR/utils_1/imports/fifo_synth_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2026">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2026"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -417,9 +424,7 @@
     </Run>
     <Run Id="clk_wiz_0_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="clk_wiz_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="clk_wiz_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/clk_wiz_0_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/clk_wiz_0_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2026">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2026"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
@@ -436,9 +441,7 @@
     </Run>
     <Run Id="fifo_impl_1" Type="Ft2:EntireDesign" Part="xc7a100tcsg324-1" ConstrsSet="fifo" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="fifo_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/fifo_impl_1" AutoRQSDir="$PSRCDIR/utils_1/imports/fifo_impl_1" ParallelReportGen="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2026">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2026"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
