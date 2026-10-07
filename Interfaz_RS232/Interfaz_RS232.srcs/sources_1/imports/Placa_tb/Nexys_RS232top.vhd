@@ -1,6 +1,6 @@
 ------------------------------------------------------
--- Autor: Juan Antonio López Martín
--- Departamento de Ingeniería Electrónica 
+-- Autor: Juan Antonio Lï¿½pez Martï¿½n
+-- Departamento de Ingenierï¿½a Electrï¿½nica 
 ------------------------------------------------------ 
 
 library IEEE;
@@ -54,7 +54,7 @@ end nexys_RS232top;
 
 architecture a_behavior of nexys_RS232top is
 
--- declaración de componentes 
+-- declaraciï¿½n de componentes 
     component clk_wiz_0
         port (
           reset     : in  std_logic;
@@ -82,7 +82,7 @@ architecture a_behavior of nexys_RS232top is
     end component;
 
 
--- declaración de señales 
+-- declaraciï¿½n de seï¿½ales 
     signal reset, reset_p : std_logic;
     signal clk : std_logic;
     signal clk1, clk2, clk3, clk4, clk5, clk6, clk7 : std_logic;
@@ -113,7 +113,7 @@ begin
      LED(7 downto 0) <= Data_out;
      Data_in <= SW(7 downto 0);
 
--- Visualización de las señales de salida y estado del sistema
+-- Visualizaciï¿½n de las seï¿½ales de salida y estado del sistema
      LED(9 downto 8) <= "00";
      LED(10) <= Ack_in;
      LED(11) <= TX_RDY;
@@ -122,17 +122,17 @@ begin
      LED(14) <= Empty;
      LED(15) <= reset;
 
--- Señales de petición de envío y recepción de datos (entrada) 
+-- Seï¿½ales de peticiï¿½n de envï¿½o y recepciï¿½n de datos (entrada) 
      Valid_D <= NOT (BTNC);
      Data_read <= BTNU; 
     -- Data_read <= BTNU;  -- ACTIVA A NIVEL BAJO!
   
--- realimentación lineas TD => RD  (necesita un cable entre los pines 1 y 2 del pmodJA)
+-- realimentaciï¿½n lineas TD => RD  (necesita un cable entre los pines 1 y 2 del pmodJA)
      JA(1) <= TD;   -- OUTPUT PORT
      JA(2) <= 'Z';   -- OUTPUT PORT
      RD <= JA(2);   -- INPUT PORT
 
--- conexión de las lineas TD y RD PC mediante el puerto microUSB (puerto serie RS232)
+-- conexiï¿½n de las lineas TD y RD PC mediante el puerto microUSB (puerto serie RS232)
 --     UART_RXD_OUT <= TD;
 --     RD <= UART_TXD_IN;
 
@@ -148,7 +148,7 @@ begin
     AN <= "00000000";
 
   reset_p <= not reset;
--- instanciación de componentes 
+-- instanciaciï¿½n de componentes 
     clk_20MHz : clk_wiz_0 PORT MAP(
         reset => reset_p,
         clk_in1 => CLK100MHz,

@@ -19,16 +19,20 @@ architecture Behavioral of RS232_TX is
     signal CurrentState, NextState : FSM_state;
 
     -- Con f = 20 MHz y 115200 bps: 20e6 / 115200 = 173.61 ciclos (cuenta 0 a 172)
-    constant PulseEndOfCount : natural := 172; 
+    constant PulseEndOfCount : integer := 172; 
 
-    signal Pulse_width : natural range 0 to PulseEndOfCount := 0;
+    signal Pulse_width : integer range 0 to PulseEndOfCount := 0;
+    signal Pulse_width_next : integer range 0 to PulseEndOfCount := 0;
+    
     signal Data_count  : integer range 0 to 7 := 0;
-    signal Data_reg    : std_logic_vector(7 downto 0);
+    signal Data_count_next  : integer range 0 to 7 := 0;
+    
+    --signal Data_reg    : std_logic_vector(7 downto 0);
 
-    signal Pulse_reset: std_logic:= '1';
-    signal Data_count_reset: std_logic:= '1';
-    signal Data_count_inc: std_logic := '1';
-    signal Data_load: std_logic := '1';
+    --signal Pulse_reset: std_logic:= '1';
+    --signal Data_count_reset: std_logic:= '1';
+    --signal Data_count_inc: std_logic := '1';
+    --signal Data_load: std_logic := '1';
 begin
 
 Sequential: process (Reset, Clk)
@@ -37,26 +41,26 @@ begin
         CurrentState <= Idle;
         Pulse_width <= 0;
         Data_count <= 0;
-        Data_reg <= (others => '0');
-        Pulse_reset <= '1';
-        Data_count_reset <= '1';
     elsif rising_edge(Clk) then
         CurrentState <= NextState;
-        if Pulse_reset = '1' then
-            Pulse_width <= 0;
-        else
-            Pulse_width <= Pulse_width + 1;
-        end if;
+        Pulse_width <= Pulse_width_next;
+        Data_count <= Data_count_next;
+        
+--        if Pulse_reset = '1' then
+--            Pulse_width <= 0;
+--        else
+--            Pulse_width <= Pulse_width + 1;
+--        end if;
 
-        if Data_count_reset = '1' then
-            Data_count <= 0;
-        elsif Data_count_inc = '1' then
-            Data_count <= Data_count + 1;
-        end if;
+--        if Data_count_reset = '1' then
+--            Data_count <= 7;
+--        elsif Data_count_inc = '1' then
+--            Data_count <= Data_count - 1;
+--        end if;
 
-        if Data_load = '1' then
-            Data_reg <= Data;
-        end if;
+--        if Data_load = '1' then
+--            Data_reg <= Data;
+--        end if;
         
     end if;
 end process Sequential;
@@ -66,56 +70,63 @@ Logic: process (CurrentState, Start, Pulse_width, Data_count)
 begin 
     --Valores predeterminados
     NextState <= CurrentState;
-    Data_count_reset <= '1';
-    Pulse_reset <= '1';
-    Data_load <= '0';
-    Data_count_inc <= '0';
-
+    Pulse_width_next <= Pulse_width;
+    Data_count_next <= Data_count;
+    
     case CurrentState is
         when Idle =>
-            Pulse_reset <= '1';
-            Data_count_reset <= '1';
-            Data_count_inc <= '0';
-            Data_load <= '0';
+            --Pulse_reset <= '1';
+            Pulse_width_next <= 0;
+            --Data_count_reset <= '1';
+            Data_count_next <= 0;
+            
             if Start = '1' then
                 NextState <= StartBit;
-                Pulse_reset <= '0';
-                Data_count_reset <= '0';
+                --Pulse_reset <= '0';
+                --Data_count_reset <= '0';
             end if;
         when StartBit =>
-            Pulse_reset <= '0';
-            Data_count_reset <= '1';
-            Data_load <= '1';
-            Data_count_inc <= '0';
+            --Pulse_reset <= '0';
+            Pulse_width_next <= Pulse_width + 1;
+            Data_count_next <= 0;
+            
+            --Data_count_inc <= '0';
             if Pulse_width = PulseEndOfCount then
                 NextState <= SendBit;
-                Pulse_reset <= '1';
+                Pulse_width_next <= 0;
             end if;
         when SendBit =>
-            Data_count_reset <= '0'; 
-            Pulse_reset <= '0';
-            Data_load <= '0';
+            --Data_count_reset <= '0'; 
+            --Pulse_reset <= '0';
+            --Data_load <= '0';
+            Pulse_width_next <= Pulse_width + 1;
             if Pulse_width = PulseEndOfCount then
-                Pulse_reset <= '1';
+                --Pulse_reset <= '1';
+                Pulse_width_next <= 0;
                 if Data_Count = 7 then
                     NextState <= StopBit;      
                 else
-                    Data_count_inc <= '1';     
+                    --Data_count_inc <= '1';
+                    Data_count_next <= Data_count + 1;     
                 end if;
             end if;
         when StopBit => 
-            Data_count_reset <= '1'; 
-            Pulse_reset <= '0';
-            Data_load <= '0';
-            Data_count_inc <= '0';
+            --Data_count_reset <= '1';
+            
+            --Pulse_reset <= '0';
+            --Data_load <= '0';
+            --Data_count_inc <= '0';
+            Pulse_width_next <= Pulse_width + 1;
             if Pulse_width = PulseEndOfCount then
                 NextState <= Idle;
-                Pulse_reset <= '1';
+                --Pulse_reset <= '1';
+                Pulse_width_next <= 0;
+                Data_count_next <= 0; 
             end if;
      end case;
 end process Logic;
 
-Output: process (CurrentState, Data_count, Data_reg)
+Output: process (CurrentState, Data_count, Data)
 begin
     --Valores predeterminados
     TX <= '0';
@@ -128,7 +139,7 @@ begin
                 TX <= '0';
                 EOT <= '0';
             when SendBit =>
-                TX <= Data_reg(Data_count);
+                TX <= Data(Data_count);
                 EOT <= '0';
             when StopBit => 
                 TX <= '1';
