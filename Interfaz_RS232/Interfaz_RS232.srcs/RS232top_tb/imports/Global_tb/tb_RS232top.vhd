@@ -47,7 +47,7 @@ begin
       Full      => Full,
       Empty     => Empty);
 
-  Data_in <= "11100010";
+  Data_in <= "01000101";
  
   -- Clock generator
   p_clk : PROCESS
